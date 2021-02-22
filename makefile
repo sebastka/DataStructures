@@ -41,11 +41,8 @@ bin/linkedlist.o: src/linkedlist/linkedlist.c
 #
 #	Check for memory leaks
 #
-memcheck1: oppgave1
-	valgrind $(VFLAGS) ./oppgave1 -v "Dette er en setning" e a
-
-memcheck2: oppgave2
-	valgrind $(VFLAGS) ./oppgave2
+memcheck1: ds
+	valgrind $(VFLAGS) ./ds
 
 #
 #	clean: Remove executables, .o files and *~ backup files
