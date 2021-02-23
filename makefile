@@ -18,10 +18,10 @@
 #
 
 CC = gcc
-CFLAGS = -g -std=c89 -x c -Wall -Wextra -Wpedantic -Wmissing-prototypes -Wstrict-prototypes
+CFLAGS = -std=c89 -Wall -Wextra -Wpedantic -Wmissing-prototypes -Wstrict-prototypes # -g
 VFLAGS = -s --leak-check=full --track-origins=yes --show-leak-kinds=all
 
-.PHONY: all ds memcheck archive reset clean
+.PHONY: all memcheck clean
 
 #
 # Targets
@@ -29,23 +29,29 @@ VFLAGS = -s --leak-check=full --track-origins=yes --show-leak-kinds=all
 all: ds
 
 ds: bin/main.o
-	$(CC) $(CFLAGS) bin/*.o -o ds
+	$(CC) $(CFLAGS) bin/Node.o bin/Linkedlist.o bin/test_linkedlist.o bin/main.o -o ds
 
-bin/main.o: linkedlist
-	$(CC) $(CFLAGS) -c src/main.c src -o bin/main.o
+bin/main.o: bin/test_linkedlist.o
+	$(CC) $(CFLAGS) -c src/main.c -o bin/main.o
 
-bin/linkedlist.o: src/linkedlist/linkedlist.c
-	$(CC) $(CFLAGS) -c src/linkedlist/linkedlist.c -o bin/linkedlist.o
+bin/test_linkedlist.o: bin/Linkedlist.o
+	$(CC) $(CFLAGS) -c src/test_linkedlist.c -o bin/test_linkedlist.o
 
+bin/Linkedlist.o: bin/Node.o
+	$(CC) $(CFLAGS) -c src/Linkedlist.c -o bin/Linkedlist.o
+
+bin/Node.o:
+	mkdir -p bin/
+	$(CC) $(CFLAGS) -c src/Node.c -o bin/Node.o
 
 #
 #	Check for memory leaks
 #
-memcheck1: ds
+memcheck: ds
 	valgrind $(VFLAGS) ./ds
 
 #
 #	clean: Remove executables, .o files and *~ backup files
 #
 clean:
-	$(RM) bin/* ds
+	$(RM) bin/* ds vgcore.*

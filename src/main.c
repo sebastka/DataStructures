@@ -1,9 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "Linkedlist.h"
+#include "test_linkedlist.h"
 
-int main(const int argc, const char** const argv)
+int main(void)
 {
-	printf("hello, world");
+	test_linkedlist();
 
 	return EXIT_SUCCESS;
 }
