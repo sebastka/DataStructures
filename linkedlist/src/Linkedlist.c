@@ -90,7 +90,7 @@ void* ll_add_at(struct Linkedlist* const linkedlist, const int pos, void* const 
 	if (!(current = prev->next))
 		_ERR("Error in ll_add_at(): could not get previous's next node\n", NULL);
 	
-	/* It's already guaranteed that neither prev or new_node can't be NULL */
+	/* It's already guaranteed that neither prev or new_node can be NULL */
 	prev->next = new_node;
 	new_node->next = current;
 	
