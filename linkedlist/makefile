@@ -21,7 +21,7 @@ CC = gcc
 CFLAGS = -std=c89 -Wall -Wextra -Wpedantic -Wmissing-prototypes -Wstrict-prototypes # -g
 VFLAGS = -s --leak-check=full --track-origins=yes --show-leak-kinds=all
 
-.PHONY: all memcheck_ll clean
+.PHONY: all memcheck clean
 
 #
 # Targets
@@ -29,7 +29,7 @@ VFLAGS = -s --leak-check=full --track-origins=yes --show-leak-kinds=all
 all: ll
 
 ll: linkedlist/bin/main.o
-	$(CC) $(CFLAGS) linkedlist/bin/Node.o linkedlist/bin/Linkedlist.o linkedlist/bin/main.o -o ll
+	$(CC) $(CFLAGS) linkedlist/bin/Node.o linkedlist/bin/Linkedlist.o linkedlist/bin/main.o -o ds
 
 linkedlist/bin/main.o: linkedlist/bin/Linkedlist.o
 	$(CC) $(CFLAGS) -c linkedlist/src/main.c -o linkedlist/bin/main.o
@@ -44,11 +44,11 @@ linkedlist/bin/Node.o:
 #
 #	Check for memory leaks
 #
-memcheck_ll: ll
+memcheck: ll
 	valgrind $(VFLAGS) ./ll
 
 #
 #	clean: Remove executables, .o files and *~ backup files
 #
 clean:
-	$(RM) */bin/* ll dll vgcore.*
+	$(RM) */bin/* ll vgcore.*

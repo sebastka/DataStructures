@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include "helpers.h"
 #include "Node.h"
 
 struct Node* node_create(void* const data)

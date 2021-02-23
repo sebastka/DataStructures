@@ -1,6 +1,7 @@
 #ifndef linkedlist_h
 #define linkedlist_h
 
+#include "helpers.h"
 #include "Node.h"
 
 struct Linkedlist {
@@ -24,10 +25,7 @@ void* ll_add(struct Linkedlist* const linkedlist, void* const data);
 /* Read */
 void* ll_get_at(const struct Linkedlist* const linkedlist, const int pos);
 int ll_count(const struct Linkedlist* const linkedlist);
-BOOL ll_print_str(const struct Linkedlist* const linkedlist);
-BOOL ll_print_int(const struct Linkedlist* const linkedlist);
-BOOL ll_print_double(const struct Linkedlist* const linkedlist);
-BOOL ll_print_char(const struct Linkedlist* const linkedlist);
+BOOL ll_printf(const struct Linkedlist* const linkedlist, const char* const fstring);
 
 /* Update */
 void* ll_set_at(const struct Linkedlist* const linkedlist, const int pos, void* const data);
@@ -37,7 +35,7 @@ void* ll_remove_at(struct Linkedlist* const linkedlist, const int pos);
 void* ll_remove(struct Linkedlist* const linkedlist);
 
 /*
- *	Helpers
+ *	Helpers - would be private in languages supporting oop
  */
 
 struct Node* ll_get_node_at(const struct Linkedlist* const linkedlist, const int pos);

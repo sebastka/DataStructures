@@ -1,14 +1,20 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "test_linkedlist.h"
 #include "Linkedlist.h"
 
-void test_linkedlist(void)
+void test_linkedlist_str(void);
+void test_linkedlist_int(void);
+void test_linkedlist_double(void);
+void test_linkedlist_char(void);
+
+int main(void)
 {
 	test_linkedlist_str();
 	test_linkedlist_int();
 	test_linkedlist_double();
 	test_linkedlist_char();
+
+	return EXIT_SUCCESS;
 }
 
 void test_linkedlist_str(void)
@@ -19,15 +25,15 @@ void test_linkedlist_str(void)
 	ll_add(linkedlist, "A");
 	ll_add(linkedlist, "B");
 	ll_add(linkedlist, "C");
-	ll_print_str(linkedlist);
+	ll_printf(linkedlist, "%s");
 	
 	printf("\nRemove element with index 1...\n");
 	ll_remove_at(linkedlist, 1);
-	ll_print_str(linkedlist);
+	ll_printf(linkedlist, "%s");
 
 	printf("\nChange element with index 1...\n");
 	ll_set_at(linkedlist, 1, "D");
-	ll_print_str(linkedlist);
+	ll_printf(linkedlist, "%s");
 
 	ll_free(linkedlist);
 }
@@ -45,15 +51,15 @@ void test_linkedlist_int(void)
 	ll_add(linkedlist, &a);
 	ll_add(linkedlist, &b);
 	ll_add(linkedlist, &c);
-	ll_print_int(linkedlist);
+	ll_printf(linkedlist, "%i");
 	
 	printf("\nRemove element with index 1...\n");
 	ll_remove_at(linkedlist, 1);
-	ll_print_int(linkedlist);
+	ll_printf(linkedlist, "%i");
 
 	printf("\nChange element with index 1...\n");
 	ll_set_at(linkedlist, 1, &d);
-	ll_print_int(linkedlist);
+	ll_printf(linkedlist, "%i");
 
 	ll_free(linkedlist);
 }
@@ -71,15 +77,15 @@ void test_linkedlist_double(void)
 	ll_add(linkedlist, &a);
 	ll_add(linkedlist, &b);
 	ll_add(linkedlist, &c);
-	ll_print_double(linkedlist);
+	ll_printf(linkedlist, "%f");
 	
 	printf("\nRemove element with index 1...\n");
 	ll_remove_at(linkedlist, 1);
-	ll_print_double(linkedlist);
+	ll_printf(linkedlist, "%f");
 
 	printf("\nChange element with index 1...\n");
 	ll_set_at(linkedlist, 1, &d);
-	ll_print_double(linkedlist);
+	ll_printf(linkedlist, "%f");
 
 	ll_free(linkedlist);
 }
@@ -97,15 +103,15 @@ void test_linkedlist_char(void)
 	ll_add(linkedlist, &a);
 	ll_add(linkedlist, &b);
 	ll_add(linkedlist, &c);
-	ll_print_char(linkedlist);
+	ll_printf(linkedlist, "%c");
 	
 	printf("\nRemove element with index 1...\n");
 	ll_remove_at(linkedlist, 1);
-	ll_print_char(linkedlist);
+	ll_printf(linkedlist, "%c");
 
 	printf("\nChange element with index 1...\n");
 	ll_set_at(linkedlist, 1, &d);
-	ll_print_char(linkedlist);
+	ll_printf(linkedlist, "%c");
 
 	ll_free(linkedlist);
 }

@@ -27,8 +27,7 @@ BOOL ll_free(struct Linkedlist* const linkedlist)
 	if (!linkedlist)
 		_ERR("Error in ll_count(): nullptr passed as argument\n", FALSE);
 
-	current = linkedlist->head;
-	for (; current != NULL; temp = NULL) {
+	for (current = linkedlist->head; current != NULL; temp = NULL) {
 		temp = current->next;
 		free(current);
 		current = temp;
@@ -84,10 +83,8 @@ void* ll_add_at(struct Linkedlist* const linkedlist, const int pos, void* const 
 		_ERR("Error in ll_add_at(): linkedlist has an invalid size\n", NULL);
 
 	/* Append element at the end */
-	if (n == pos) {
-		prev->next = new_node;
-		return data;
-	}
+	if (n == pos)
+		return (prev->next = new_node)->data;
 
 	/* Otherwise, put new_node between previous and current */
 	if (!(current = prev->next))
@@ -153,62 +150,38 @@ int ll_count(const struct Linkedlist* const linkedlist)
 	return n;
 }
 
-BOOL ll_print_str(const struct Linkedlist* const linkedlist)
+BOOL ll_printf(const struct Linkedlist* const linkedlist, const char* const fstring)
 {
 	int i = 0;
+	int strlen = 0;
 	struct Node* current = NULL;
 
-	if (!linkedlist)
+	if (!linkedlist || !fstring)
 		_ERR("Error in ll_get_node_at(): nullptr passed as argument\n", FALSE);
 
-	current = linkedlist->head;
-	for (i = 0; current != NULL; current = current->next, ++i)
-		printf("Node #%i : %s\n", i, (char *) current->data);
+	/* Find fstring length */
+	for (strlen = 0; fstring[strlen] != '\0'; ++strlen);
 
-	return TRUE;
-}
-
-BOOL ll_print_int(const struct Linkedlist* const linkedlist)
-{
-	int i = 0;
-	struct Node* current = NULL;
-
-	if (!linkedlist)
-		_ERR("Error in ll_get_node_at(): nullptr passed as argument\n", FALSE);
+	if (strlen != 2 || fstring[0] != '%')
+		_ERR("Error in ll_get_node_at(): invalid fstring\n", FALSE);
 
 	current = linkedlist->head;
-	for (i = 0; current != NULL; current = current->next, ++i)
-		printf("Node #%i : %i\n", i, *( (int *) current->data ));
+	for (i = 0; current != NULL; current = current->next, ++i) {
+		printf("Node #%i: ", i);
 
-	return TRUE;
-}
-
-BOOL ll_print_double(const struct Linkedlist* const linkedlist)
-{
-	int i = 0;
-	struct Node* current = NULL;
-
-	if (!linkedlist)
-		_ERR("Error in ll_get_node_at(): nullptr passed as argument\n", FALSE);
-
-	current = linkedlist->head;
-	for (i = 0; current != NULL; current = current->next, ++i)
-		printf("Node #%i : %f\n", i, *( (double *) current->data ));
-
-	return TRUE;
-}
-
-BOOL ll_print_char(const struct Linkedlist* const linkedlist)
-{
-	int i = 0;
-	struct Node* current = NULL;
-
-	if (!linkedlist)
-		_ERR("Error in ll_get_node_at(): nullptr passed as argument\n", FALSE);
-
-	current = linkedlist->head;
-	for (i = 0; current != NULL; current = current->next, ++i)
-		printf("Node #%i : %c\n", i, *( (char *) current->data ));
+		if (fstring[1] == 's')
+			printf(fstring, (char *) current->data);
+		else if (fstring[1] == 'i')
+			printf(fstring, *((int *) current->data));
+		else if (fstring[1] == 'f')
+			printf(fstring, *((double *) current->data));
+		else if (fstring[1] == 'c')
+			printf(fstring, *((char *) current->data));
+		else
+			printf("Datatype not supported");
+		
+		printf("\n");
+	}
 
 	return TRUE;
 }
