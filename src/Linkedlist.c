@@ -12,7 +12,7 @@ struct Linkedlist* ll_create(void)
 	struct Linkedlist* linkedlist = NULL;
 
 	if (!(linkedlist = calloc(1, sizeof(struct Linkedlist))))
-		_ERR("Error in node_create(): could not allocate memory\n", NULL);
+		_ERR_P("Error in node_create()", NULL);
 
 	linkedlist->head = NULL;
 	
