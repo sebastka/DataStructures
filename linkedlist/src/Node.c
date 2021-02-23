@@ -9,12 +9,12 @@ struct Node* node_create(void* const data)
 
 	if (!data)
 		_ERR("Error in node_create(): nullptr passed as argument\n", NULL);
-	
+
 	if (!(new_node = calloc(1, sizeof(struct Node))))
 		_ERR_P("Error in node_create()", NULL);
 
 	new_node->data = data;
 	new_node->next = NULL;
-	
+
 	return new_node;
 }

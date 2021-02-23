@@ -26,7 +26,7 @@ void test_linkedlist_str(void)
 	ll_add(linkedlist, "B");
 	ll_add(linkedlist, "C");
 	ll_printf(linkedlist, "%s");
-	
+
 	printf("\nRemove element with index 1...\n");
 	ll_remove_at(linkedlist, 1);
 	ll_printf(linkedlist, "%s");
@@ -41,7 +41,7 @@ void test_linkedlist_str(void)
 void test_linkedlist_int(void)
 {
 	struct Linkedlist* linkedlist = ll_create();
-	
+
 	int a = 0;
 	int b = 1;
 	int c = 2;
@@ -52,7 +52,7 @@ void test_linkedlist_int(void)
 	ll_add(linkedlist, &b);
 	ll_add(linkedlist, &c);
 	ll_printf(linkedlist, "%i");
-	
+
 	printf("\nRemove element with index 1...\n");
 	ll_remove_at(linkedlist, 1);
 	ll_printf(linkedlist, "%i");
@@ -67,7 +67,7 @@ void test_linkedlist_int(void)
 void test_linkedlist_double(void)
 {
 	struct Linkedlist* linkedlist = ll_create();
-	
+
 	double a = 0;
 	double b = 1;
 	double c = 2;
@@ -78,7 +78,7 @@ void test_linkedlist_double(void)
 	ll_add(linkedlist, &b);
 	ll_add(linkedlist, &c);
 	ll_printf(linkedlist, "%f");
-	
+
 	printf("\nRemove element with index 1...\n");
 	ll_remove_at(linkedlist, 1);
 	ll_printf(linkedlist, "%f");
@@ -93,7 +93,7 @@ void test_linkedlist_double(void)
 void test_linkedlist_char(void)
 {
 	struct Linkedlist* linkedlist = ll_create();
-	
+
 	char a = 'a';
 	char b = 'b';
 	char c = 'c';
@@ -104,7 +104,7 @@ void test_linkedlist_char(void)
 	ll_add(linkedlist, &b);
 	ll_add(linkedlist, &c);
 	ll_printf(linkedlist, "%c");
-	
+
 	printf("\nRemove element with index 1...\n");
 	ll_remove_at(linkedlist, 1);
 	ll_printf(linkedlist, "%c");

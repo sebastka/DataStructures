@@ -15,7 +15,7 @@ struct Linkedlist* ll_create(void)
 		_ERR_P("Error in node_create()", NULL);
 
 	linkedlist->head = NULL;
-	
+
 	return linkedlist;
 }
 
@@ -32,7 +32,7 @@ BOOL ll_free(struct Linkedlist* const linkedlist)
 		free(current);
 		current = temp;
 	}
-	
+
 	free(linkedlist);
 
 	return TRUE;
@@ -50,7 +50,7 @@ void* ll_add_at(struct Linkedlist* const linkedlist, const int pos, void* const 
 	struct Node* current = NULL;
 	struct Node* new_node = NULL;
 	int n = 0;
-	
+
 	if (!linkedlist)
 		_ERR("Error in ll_add_at(): nullptr passed as linkedlist argument\n", NULL);
 
@@ -59,7 +59,7 @@ void* ll_add_at(struct Linkedlist* const linkedlist, const int pos, void* const 
 
 	if (pos < 0)
 		_ERR("Error in ll_add_at(): invalid position passed as argument\n", NULL);
-	
+
 	if (!(new_node = node_create(data)))
 		_ERR("Error in ll_add_at(): could not create node\n", NULL);
 
@@ -89,11 +89,11 @@ void* ll_add_at(struct Linkedlist* const linkedlist, const int pos, void* const 
 	/* Otherwise, put new_node between previous and current */
 	if (!(current = prev->next))
 		_ERR("Error in ll_add_at(): could not get previous's next node\n", NULL);
-	
+
 	/* It's already guaranteed that neither prev or new_node can be NULL */
 	prev->next = new_node;
 	new_node->next = current;
-	
+
 	return new_node->data;
 }
 
@@ -106,7 +106,7 @@ void* ll_add(struct Linkedlist* const linkedlist, void* const data)
 
 	if (!data)
 		_ERR("Error in ll_add(): nullptr passed as data argument\n", NULL);
-	
+
 	if ((n = ll_count(linkedlist)) < 0)
 		_ERR("Error in ll_add(): could not get count\n", NULL);
 
@@ -121,13 +121,13 @@ void* ll_get_at(const struct Linkedlist* const linkedlist, const int pos)
 
 	if (!linkedlist)
 		_ERR("Error in ll_get_at(): nullptr passed as argument\n", NULL);
-	
+
 	if (pos < 0)
 		_ERR("Error in ll_get_at(): invalid position passed as argument\n", NULL);
-	
+
 	if (!(node = ll_get_node_at(linkedlist, pos)))
 		_ERR("Error in ll_get_at(): could not get node\n", NULL);
-	
+
 	return node->data;
 }
 
@@ -143,7 +143,7 @@ int ll_count(const struct Linkedlist* const linkedlist)
 
 	for (n = 0; current != NULL; ++n)
 		current = current->next;
-	
+
 	if (n < 0)
 		_ERR("Error in ll_count(): overflow!\n", ERR);
 
@@ -179,7 +179,7 @@ BOOL ll_printf(const struct Linkedlist* const linkedlist, const char* const fstr
 			printf(fstring, *((char *) current->data));
 		else
 			printf("Datatype not supported");
-		
+
 		printf("\n");
 	}
 
@@ -194,7 +194,7 @@ void* ll_set_at(const struct Linkedlist* const linkedlist, const int pos, void* 
 
 	if (!linkedlist || !data)
 		_ERR("Error in ll_set_at(): nullptr passed as argument\n", NULL);
-	
+
 	if (pos < 0)
 		_ERR("Error in ll_set_at(): invalid position passed as argument\n", NULL);
 
@@ -218,7 +218,7 @@ void* ll_remove_at(struct Linkedlist* const linkedlist, const int pos)
 
 	if (!(current = ll_get_node_at(linkedlist, pos)))
 		_ERR("Error in ll_remove_at(): could not get current\n", NULL);
-	
+
 	/* Can be NULL */
 	next = current->next;
 
@@ -228,7 +228,7 @@ void* ll_remove_at(struct Linkedlist* const linkedlist, const int pos)
 	} else {
 		if (!(prev = ll_get_node_at(linkedlist, pos-1)))
 			_ERR("Error in ll_remove_at(): could not get previous node\n", NULL);
-		
+
 		prev->next = next;
 	}
 
@@ -242,7 +242,7 @@ void* ll_remove(struct Linkedlist* const linkedlist)
 {
 	if (!linkedlist)
 		_ERR("Error in ll_remove(): nullptr passed as argument\n", NULL);
-	
+
 	return ll_remove_at(linkedlist, 0);
 }
 
@@ -254,19 +254,19 @@ struct Node* ll_get_node_at(const struct Linkedlist* const linkedlist, const int
 {
 	struct Node* node = NULL;
 	int i = 0;
-	
+
 	if (!linkedlist)
 		_ERR("Error in ll_get_node_at(): nullptr passed as argument\n", NULL);
-	
+
 	if (pos < 0)
 		_ERR("Error in ll_get_node_at(): invalid position passed as argument\n", NULL);
-	
+
 	node = linkedlist->head;
 	for (i = 0; node != NULL && pos != i; ++i)
 		node = node->next;
-	
+
 	if (!node)
 		_ERR("Error in ll_get_node_at(): could not find node\n", NULL);
-	
+
 	return node;
 }
