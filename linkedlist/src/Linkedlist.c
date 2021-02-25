@@ -4,27 +4,6 @@
 #include "Node.h"
 
 /*
- *	"Constructor" and "Destructor"
- */
-
-BOOL linkedlist_free(struct Linkedlist* const linkedlist)
-{
-	struct Node *temp = NULL;
-	struct Node *current = NULL;
-
-	if (!linkedlist)
-		_ERR("Error in linkedlist_count(): nullptr passed as argument\n", FALSE);
-
-	for (current = linkedlist->head; current != NULL; temp = NULL) {
-		temp = current->next;
-		free(current);
-		current = temp;
-	}
-
-	return TRUE;
-}
-
-/*
  *	CRUD methods
  */
 
@@ -230,6 +209,23 @@ void* linkedlist_remove(struct Linkedlist* const linkedlist)
 		_ERR("Error in linkedlist_remove(): nullptr passed as argument\n", NULL);
 
 	return linkedlist_remove_at(linkedlist, 0);
+}
+
+BOOL linkedlist_free(struct Linkedlist* const linkedlist)
+{
+	struct Node *temp = NULL;
+	struct Node *current = NULL;
+
+	if (!linkedlist)
+		_ERR("Error in linkedlist_count(): nullptr passed as argument\n", FALSE);
+
+	for (current = linkedlist->head; current != NULL; temp = NULL) {
+		temp = current->next;
+		free(current);
+		current = temp;
+	}
+
+	return TRUE;
 }
 
 /*
