@@ -7,11 +7,6 @@
 
 #define	ERR	-1
 
-/* For readability, since bool type was introduced in C99 */
-#define	BOOL	unsigned char
-#define	TRUE	1U
-#define	FALSE	0U
-
 /*
  *	Error handling functions:
  *		- one generic

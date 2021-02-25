@@ -115,20 +115,20 @@ int linkedlist_count(const struct Linkedlist* const linkedlist)
 	return n;
 }
 
-BOOL linkedlist_printf(const struct Linkedlist* const linkedlist, const char* const fstring)
+int linkedlist_printf(const struct Linkedlist* const linkedlist, const char* const fstring)
 {
 	int i = 0;
 	int strlen = 0;
 	struct Node* current = NULL;
 
 	if (!linkedlist || !fstring)
-		_ERR("Error in linkedlist_get_node_at(): nullptr passed as argument\n", FALSE);
+		_ERR("Error in linkedlist_get_node_at(): nullptr passed as argument\n", ERR);
 
 	/* Find fstring length */
 	for (strlen = 0; fstring[strlen] != '\0'; ++strlen);
 
 	if (strlen != 2 || fstring[0] != '%')
-		_ERR("Error in linkedlist_get_node_at(): invalid fstring\n", FALSE);
+		_ERR("Error in linkedlist_get_node_at(): invalid fstring\n", ERR);
 
 	current = linkedlist->head;
 	for (i = 0; current != NULL; current = current->next, ++i) {
@@ -148,7 +148,7 @@ BOOL linkedlist_printf(const struct Linkedlist* const linkedlist, const char* co
 		printf("\n");
 	}
 
-	return TRUE;
+	return 1;
 }
 
 /* Update */
@@ -211,13 +211,13 @@ void* linkedlist_remove(struct Linkedlist* const linkedlist)
 	return linkedlist_remove_at(linkedlist, 0);
 }
 
-BOOL linkedlist_free(struct Linkedlist* const linkedlist)
+int linkedlist_free(struct Linkedlist* const linkedlist)
 {
 	struct Node *temp = NULL;
 	struct Node *current = NULL;
 
 	if (!linkedlist)
-		_ERR("Error in linkedlist_count(): nullptr passed as argument\n", FALSE);
+		_ERR("Error in linkedlist_count(): nullptr passed as argument\n", ERR);
 
 	for (current = linkedlist->head; current != NULL; temp = NULL) {
 		temp = current->next;
@@ -225,7 +225,7 @@ BOOL linkedlist_free(struct Linkedlist* const linkedlist)
 		current = temp;
 	}
 
-	return TRUE;
+	return 1;
 }
 
 /*

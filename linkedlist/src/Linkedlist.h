@@ -19,7 +19,7 @@ void* linkedlist_add(struct Linkedlist* const linkedlist, void* const data);
 /* Read */
 void* linkedlist_get_at(const struct Linkedlist* const linkedlist, const int pos);
 int linkedlist_count(const struct Linkedlist* const linkedlist);
-BOOL linkedlist_printf(const struct Linkedlist* const linkedlist, const char* const fstring);
+int linkedlist_printf(const struct Linkedlist* const linkedlist, const char* const fstring);
 
 /* Update */
 void* linkedlist_set_at(const struct Linkedlist* const linkedlist, const int pos, void* const data);
@@ -27,7 +27,7 @@ void* linkedlist_set_at(const struct Linkedlist* const linkedlist, const int pos
 /* Delete */
 void* linkedlist_remove_at(struct Linkedlist* const linkedlist, const int pos);
 void* linkedlist_remove(struct Linkedlist* const linkedlist);
-BOOL linkedlist_free(struct Linkedlist* const linkedlist);
+int linkedlist_free(struct Linkedlist* const linkedlist);
 
 /*
  *	Helpers - would be private in languages supporting oop
