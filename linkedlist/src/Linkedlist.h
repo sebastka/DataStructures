@@ -11,7 +11,7 @@ struct Linkedlist {
 /*
  *	"Constructor" and "Destructor"
  */
-struct Linkedlist* ll_create(void);
+/*struct Linkedlist* ll_create(void);*/
 BOOL ll_free(struct Linkedlist* const linkedlist);
 
 /*

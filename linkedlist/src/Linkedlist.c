@@ -7,6 +7,7 @@
  *	"Constructor" and "Destructor"
  */
 
+/*
 struct Linkedlist* ll_create(void)
 {
 	struct Linkedlist* linkedlist = NULL;
@@ -18,6 +19,7 @@ struct Linkedlist* ll_create(void)
 
 	return linkedlist;
 }
+*/
 
 BOOL ll_free(struct Linkedlist* const linkedlist)
 {
@@ -33,7 +35,7 @@ BOOL ll_free(struct Linkedlist* const linkedlist)
 		current = temp;
 	}
 
-	free(linkedlist);
+	/*free(linkedlist)*/;
 
 	return TRUE;
 }
