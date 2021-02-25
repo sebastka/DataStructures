@@ -7,20 +7,6 @@
  *	"Constructor" and "Destructor"
  */
 
-/*
-struct Linkedlist* ll_create(void)
-{
-	struct Linkedlist* linkedlist = NULL;
-
-	if (!(linkedlist = calloc(1, sizeof(struct Linkedlist))))
-		_ERR_P("Error in node_create()", NULL);
-
-	linkedlist->head = NULL;
-
-	return linkedlist;
-}
-*/
-
 BOOL ll_free(struct Linkedlist* const linkedlist)
 {
 	struct Node *temp = NULL;
@@ -34,8 +20,6 @@ BOOL ll_free(struct Linkedlist* const linkedlist)
 		free(current);
 		current = temp;
 	}
-
-	/*free(linkedlist)*/;
 
 	return TRUE;
 }

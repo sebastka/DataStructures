@@ -3,18 +3,16 @@
 #include "Linkedlist.h"
 
 void test_linkedlist_str(void);
-/*
 void test_linkedlist_int(void);
 void test_linkedlist_double(void);
 void test_linkedlist_char(void);
-*/
 
 int main(void)
 {
 	test_linkedlist_str();
-	/*test_linkedlist_int();
+	test_linkedlist_int();
 	test_linkedlist_double();
-	test_linkedlist_char();*/
+	test_linkedlist_char();
 
 	return EXIT_SUCCESS;
 }
@@ -40,10 +38,9 @@ void test_linkedlist_str(void)
 	ll_free(&linkedlist);
 }
 
-/*
 void test_linkedlist_int(void)
 {
-	struct Linkedlist* linkedlist = ll_create();
+	struct Linkedlist linkedlist = { NULL };
 
 	int a = 0;
 	int b = 1;
@@ -51,25 +48,25 @@ void test_linkedlist_int(void)
 	int d = 3;
 
 	printf("Add three elements...\n");
-	ll_add(linkedlist, &a);
-	ll_add(linkedlist, &b);
-	ll_add(linkedlist, &c);
-	ll_printf(linkedlist, "%i");
+	ll_add(&linkedlist, &a);
+	ll_add(&linkedlist, &b);
+	ll_add(&linkedlist, &c);
+	ll_printf(&linkedlist, "%i");
 
 	printf("\nRemove element with index 1...\n");
-	ll_remove_at(linkedlist, 1);
-	ll_printf(linkedlist, "%i");
+	ll_remove_at(&linkedlist, 1);
+	ll_printf(&linkedlist, "%i");
 
 	printf("\nChange element with index 1...\n");
-	ll_set_at(linkedlist, 1, &d);
-	ll_printf(linkedlist, "%i");
+	ll_set_at(&linkedlist, 1, &d);
+	ll_printf(&linkedlist, "%i");
 
-	ll_free(linkedlist);
+	ll_free(&linkedlist);
 }
 
 void test_linkedlist_double(void)
 {
-	struct Linkedlist* linkedlist = ll_create();
+	struct Linkedlist linkedlist = { NULL };
 
 	double a = 0;
 	double b = 1;
@@ -77,25 +74,25 @@ void test_linkedlist_double(void)
 	double d = 3;
 
 	printf("Add three elements...\n");
-	ll_add(linkedlist, &a);
-	ll_add(linkedlist, &b);
-	ll_add(linkedlist, &c);
-	ll_printf(linkedlist, "%f");
+	ll_add(&linkedlist, &a);
+	ll_add(&linkedlist, &b);
+	ll_add(&linkedlist, &c);
+	ll_printf(&linkedlist, "%f");
 
 	printf("\nRemove element with index 1...\n");
-	ll_remove_at(linkedlist, 1);
-	ll_printf(linkedlist, "%f");
+	ll_remove_at(&linkedlist, 1);
+	ll_printf(&linkedlist, "%f");
 
 	printf("\nChange element with index 1...\n");
-	ll_set_at(linkedlist, 1, &d);
-	ll_printf(linkedlist, "%f");
+	ll_set_at(&linkedlist, 1, &d);
+	ll_printf(&linkedlist, "%f");
 
-	ll_free(linkedlist);
+	ll_free(&linkedlist);
 }
 
 void test_linkedlist_char(void)
 {
-	struct Linkedlist* linkedlist = ll_create();
+	struct Linkedlist linkedlist = { NULL };
 
 	char a = 'a';
 	char b = 'b';
@@ -103,19 +100,18 @@ void test_linkedlist_char(void)
 	char d = 'c';
 
 	printf("Add three elements...\n");
-	ll_add(linkedlist, &a);
-	ll_add(linkedlist, &b);
-	ll_add(linkedlist, &c);
-	ll_printf(linkedlist, "%c");
+	ll_add(&linkedlist, &a);
+	ll_add(&linkedlist, &b);
+	ll_add(&linkedlist, &c);
+	ll_printf(&linkedlist, "%c");
 
 	printf("\nRemove element with index 1...\n");
-	ll_remove_at(linkedlist, 1);
-	ll_printf(linkedlist, "%c");
+	ll_remove_at(&linkedlist, 1);
+	ll_printf(&linkedlist, "%c");
 
 	printf("\nChange element with index 1...\n");
-	ll_set_at(linkedlist, 1, &d);
-	ll_printf(linkedlist, "%c");
+	ll_set_at(&linkedlist, 1, &d);
+	ll_printf(&linkedlist, "%c");
 
-	ll_free(linkedlist);
+	ll_free(&linkedlist);
 }
-*/
