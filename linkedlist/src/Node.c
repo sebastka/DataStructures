@@ -15,6 +15,6 @@ struct Node* node_create(void* const data)
 
 	new_node->data = data;
 	new_node->next = NULL;
-
+	
 	return new_node;
 }
