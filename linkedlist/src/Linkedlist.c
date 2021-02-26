@@ -122,13 +122,13 @@ int linkedlist_printf(const struct Linkedlist* const linkedlist, const char* con
 	struct Node* current = NULL;
 
 	if (!linkedlist || !fstring)
-		_ERR("Error in linkedlist_get_node_at(): nullptr passed as argument\n", ERR);
+		_ERR("Error in linkedlist_printf(): nullptr passed as argument\n", ERR);
 
 	/* Find fstring length */
 	for (strlen = 0; fstring[strlen] != '\0'; ++strlen);
 
 	if (strlen != 2 || fstring[0] != '%')
-		_ERR("Error in linkedlist_get_node_at(): invalid fstring\n", ERR);
+		_ERR("Error in linkedlist_printf(): invalid fstring\n", ERR);
 
 	current = linkedlist->head;
 	for (i = 0; current != NULL; current = current->next, ++i) {
@@ -143,7 +143,7 @@ int linkedlist_printf(const struct Linkedlist* const linkedlist, const char* con
 		else if (fstring[1] == 'c')
 			printf(fstring, *((char *) current->data));
 		else
-			printf("Datatype not supported");
+			_ERR("Error in linkedlist_printf(): datatype not supported", 0);
 
 		printf("\n");
 	}
@@ -217,7 +217,7 @@ int linkedlist_free(struct Linkedlist* const linkedlist)
 	struct Node *current = NULL;
 
 	if (!linkedlist)
-		_ERR("Error in linkedlist_count(): nullptr passed as argument\n", ERR);
+		_ERR("Error in linkedlist_free(): nullptr passed as argument\n", ERR);
 
 	for (current = linkedlist->head; current != NULL; temp = NULL) {
 		temp = current->next;
